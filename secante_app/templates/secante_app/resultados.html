@@ -1,0 +1,21 @@
+{% extends 'secante_app/base.html' %}
+
+{% block title %}Resultados{% endblock %}
+
+{% block content %}
+<h2>Resultados del Método</h2>
+
+<p><strong>Función:</strong> {{ resultado.funcion }}</p>
+<p><strong>Raíz aproximada:</strong> {{ resultado.resultado }}</p>
+<p><strong>Iteraciones:</strong> {{ resultado.iteraciones }}</p>
+
+<h3>Pasos:</h3>
+<ol>
+    {% for paso in pasos %}
+        <li>{{ paso }}</li>
+    {% endfor %}
+</ol>
+
+<h3>Gráfica de Convergencia:</h3>
+<img src="data:image/png;base64,{{ grafica_base64 }}" alt="Gráfica">
+{% endblock %}

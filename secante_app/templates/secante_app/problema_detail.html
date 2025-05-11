@@ -1,0 +1,18 @@
+{% extends 'secante_app/base.html' %}
+
+{% block title %}Detalle del Problema{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-xl font-bold mb-4 text-blue-700">Detalle del Problema #{{ problema.id }}</h2>
+
+    <p><strong>Función:</strong> {{ problema.funcion }}</p>
+    <p><strong>x0:</strong> {{ problema.x0 }}</p>
+    <p><strong>x1:</strong> {{ problema.x1 }}</p>
+    <p><strong>Tolerancia:</strong> {{ problema.tolerancia }}</p>
+    <p><strong>Iteraciones:</strong> {{ problema.iteraciones }}</p>
+    <p><strong>Resultado:</strong> {{ problema.resultado }}</p>
+
+    <a href="{% url 'problema_list' %}" class="text-blue-600 hover:underline mt-4 inline-block">← Volver a la lista</a>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'secante_app/base.html' %}
+
+{% block title %}Lista de Problemas{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto mt-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Problemas Calculados</h2>
+
+    {% if problemas %}
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">Función</th>
+                        <th scope="col" class="px-6 py-3">Resultado</th>
+                        <th scope="col" class="px-6 py-3 text-right">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in problemas %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="px-6 py-4 font-medium">{{ item.id }}</td>
+                        <td class="px-6 py-4">{{ item.funcion }}</td>
+                        <td class="px-6 py-4">{{ item.resultado }}</td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="{% url 'problema_detail' item.id %}" class="text-blue-600 hover:underline dark:text-blue-400">Ver detalle</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500">No hay problemas calculados aún.</p>
+    {% endif %}
+</div>
+{% endblock %}
